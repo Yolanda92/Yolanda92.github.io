@@ -4,7 +4,7 @@
   <title><![CDATA[My Octopress Blog]]></title>
   <link href="http://yolanda92.github.io/atom.xml" rel="self"/>
   <link href="http://yolanda92.github.io/"/>
-  <updated>2016-09-10T17:55:17+08:00</updated>
+  <updated>2016-10-29T17:32:54+08:00</updated>
   <id>http://yolanda92.github.io/</id>
   <author>
     <name><![CDATA[Your Name]]></name>
@@ -12,5 +12,119 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Octopress博客搭建(window 环境)]]></title>
+    <link href="http://yolanda92.github.io/blog/2016/09/14/first/"/>
+    <updated>2016-09-14T16:00:39+08:00</updated>
+    <id>http://yolanda92.github.io/blog/2016/09/14/first</id>
+    <content type="html"><![CDATA[<h3>一 下载ruby</h3>
+
+<p><a href="http://rubyinstaller.org/downloads">http://rubyinstaller.org/downloads</a>  双击安装
+安装完成后可查看ruby版本</p>
+
+<pre><code>ruby --version
+</code></pre>
+
+<h3>二 创建仓库</h3>
+
+<p>1、在github官网上注册号，然后创建仓库，名字为 : 名字.github.io</p>
+
+<h3>三 安装octopress (确保已装git)</h3>
+
+<p>1、克隆仓库</p>
+
+<pre><code>git clone git://github.com/imathis/octopress.git
+</code></pre>
+
+<p>2、然后更改git配置</p>
+
+<blockquote><p>1 更改js公共库（/source/_includes/head.html文件中的改为
+  <script src="//libs.baidu.com/jquery/1.7.2/jquery.min.js"></script></p>
+
+<p>2 去掉Twitter
+  根目录下的Twitter注释
+  \source/_includes\after_footer.html中的Twitter注释</p>
+
+<p>3 删除Google font
+  \source_includes\custom\head.html 中的 Google font样式注释</p></blockquote>
+
+<pre><code> &lt;link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css"&gt;
+ &lt;link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css"&gt;
+</code></pre>
+
+<p>3、将远程分支指向自己的</p>
+
+<pre><code>git remote rm origin
+git remote add origin https://github.com/Yolanda92/Yolanda92.github.io.git
+git checkout -b source
+</code></pre>
+
+<p>4、安装</p>
+
+<pre><code>cd octopress 
+gem install bundler   
+bundle install
+rake install
+</code></pre>
+
+<p>rake aborted!
+Gem::LoadError: You have already activated rake 11.2.2, but your Gemfile require
+s rake 10.5.0. Prepending <code>bundle exec</code> to your command may solve this.</p>
+
+<pre><code>注1 : 到第四步的时候如果报错 Please update your PATH to include build tools or download the DevKit 需先安装 DevKit , 到下载ruby的地址下载DevKit , 下载完后解压到指定的目录 , 然后到安装目录下运行如下命令后继续执行第四步
+
+ruby dk.rb init    
+ruby dk.rb install
+
+注2 : 如果还报错且报错提示中包含 jekyll-sass-converter , 需再安装jekyll-sass-converter , 到https://rubygems.org/gems/jekyll-sass-converter/versions/1.4.0中选择1.4.0版本,然后复制右侧命令行执行如下命令后继续执行第四步
+
+gem install jekyll-sass-converter
+
+注3 : rake aborted!
+Gem::LoadError: You have already activated rake 11.2.2, but your Gemfile require
+s rake 10.5.0. Prepending `bundle exec` to your command may solve this.
+</code></pre>
+
+<h3>四 部署</h3>
+
+<p>去github网址获得自己的git地址,然后执行如下红色的命令,输入地址</p>
+
+<pre><code>D:\phptools\Apache2.4\Apache24\htdocs\octopress&gt;rake setup_github_pages
+## Set the codepage to 65001 for Windows machines
+Enter the read/write url for your repository
+(For example, 'git@github.com:your_username/your_username.github.io.git)
+           or 'https://github.com/your_username/your_username.github.io')
+Repository url: https://github.com/Yolanda92/Yolanda92.github.io.git
+</code></pre>
+
+<h3>五 生成</h3>
+
+<pre><code>rake generate //生成HTML
+rake deploy //发布 几分钟后可浏览https://yolanda92.github.io/
+</code></pre>
+
+<h3>六 推到线上</h3>
+
+<pre><code>git add .
+git commit -m '备注信息'
+git push origin source
+</code></pre>
+
+<h3>七 发布博客</h3>
+
+<pre><code>rake new_post['title']
+</code></pre>
+
+<blockquote><p>使用makedown编辑器打开,有如下内容</p></blockquote>
+
+<pre><code>layout: post
+title: "first" //标题
+date: 2016-09-14 16:00:39 +0800
+comments: true //是否允许评论
+categories: //分类
+</code></pre>
+]]></content>
+  </entry>
   
 </feed>

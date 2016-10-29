@@ -1,0 +1,101 @@
+---
+layout: post
+title: "octopress博客搭建(window 环境)"
+date: 2016-09-14 16:00:39 +0800
+comments: true
+categories: 
+---
+###一 下载ruby
+
+http://rubyinstaller.org/downloads  双击安装
+安装完成后可查看ruby版本
+
+	ruby --version
+
+###二 创建仓库 
+
+1、在github官网上注册号，然后创建仓库，名字为 : 名字.github.io
+
+###三 安装octopress (确保已装git)
+1、克隆仓库
+
+	git clone git://github.com/imathis/octopress.git
+
+2、然后更改git配置
+>1 更改js公共库（/source/_includes/head.html文件中的改为
+  <script src="//libs.baidu.com/jquery/1.7.2/jquery.min.js"></script>
+
+>2 去掉Twitter
+  根目录下的Twitter注释
+  \source/_includes\after_footer.html中的Twitter注释
+
+>3 删除Google font
+  \source\_includes\custom\head.html 中的 Google font样式注释
+
+     <link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+     <link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+3、将远程分支指向自己的
+
+    git remote rm origin
+    git remote add origin https://github.com/Yolanda92/Yolanda92.github.io.git
+    git checkout -b source
+
+4、安装
+
+    cd octopress 
+    gem install bundler   
+    bundle install
+	rake install
+
+rake aborted!
+Gem::LoadError: You have already activated rake 11.2.2, but your Gemfile require
+s rake 10.5.0. Prepending `bundle exec` to your command may solve this.
+
+    注1 : 到第四步的时候如果报错 Please update your PATH to include build tools or download the DevKit 需先安装 DevKit , 到下载ruby的地址下载DevKit , 下载完后解压到指定的目录 , 然后到安装目录下运行如下命令后继续执行第四步
+    
+    ruby dk.rb init    
+    ruby dk.rb install
+
+	注2 : 如果还报错且报错提示中包含 jekyll-sass-converter , 需再安装jekyll-sass-converter , 到https://rubygems.org/gems/jekyll-sass-converter/versions/1.4.0中选择1.4.0版本,然后复制右侧命令行执行如下命令后继续执行第四步
+	
+	gem install jekyll-sass-converter
+
+	注3 : rake aborted!
+	Gem::LoadError: You have already activated rake 11.2.2, but your Gemfile require
+	s rake 10.5.0. Prepending `bundle exec` to your command may solve this.
+
+###四 部署
+
+去github网址获得自己的git地址,然后执行如下红色的命令,输入地址
+
+	D:\phptools\Apache2.4\Apache24\htdocs\octopress>rake setup_github_pages
+	## Set the codepage to 65001 for Windows machines
+	Enter the read/write url for your repository
+	(For example, 'git@github.com:your_username/your_username.github.io.git)
+	           or 'https://github.com/your_username/your_username.github.io')
+	Repository url: https://github.com/Yolanda92/Yolanda92.github.io.git
+
+###五 生成
+
+	rake generate //生成HTML
+	rake deploy //发布 几分钟后可浏览https://yolanda92.github.io/
+
+###六 推到线上
+
+	git add .
+	git commit -m '备注信息'
+	git push origin source
+
+###七 发布博客
+
+	rake new_post['title']
+>使用makedown编辑器打开,有如下内容
+	
+	layout: post
+	title: "first" //标题
+	date: 2016-09-14 16:00:39 +0800
+	comments: true //是否允许评论
+	categories: //分类
+
+

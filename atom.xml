@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[My Octopress Blog]]></title>
-  <link href="http://yolanda92.github.io/atom.xml" rel="self"/>
-  <link href="http://yolanda92.github.io/"/>
-  <updated>2016-10-29T17:32:54+08:00</updated>
-  <id>http://yolanda92.github.io/</id>
+  <link href="http://www.muyoubuluo.cn/atom.xml" rel="self"/>
+  <link href="http://www.muyoubuluo.cn/"/>
+  <updated>2016-11-02T16:03:36+08:00</updated>
+  <id>http://www.muyoubuluo.cn/</id>
   <author>
     <name><![CDATA[Your Name]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Octopress博客搭建(window 环境)]]></title>
-    <link href="http://yolanda92.github.io/blog/2016/09/14/first/"/>
+    <link href="http://www.muyoubuluo.cn/blog/2016/09/14/first/"/>
     <updated>2016-09-14T16:00:39+08:00</updated>
-    <id>http://yolanda92.github.io/blog/2016/09/14/first</id>
+    <id>http://www.muyoubuluo.cn/blog/2016/09/14/first</id>
     <content type="html"><![CDATA[<h3>一 下载ruby</h3>
 
 <p><a href="http://rubyinstaller.org/downloads">http://rubyinstaller.org/downloads</a>  双击安装
